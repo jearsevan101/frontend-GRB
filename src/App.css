@@ -28,6 +28,31 @@
   color: #61dafb;
 }
 
+.label-small,
+.label-medium {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.label-small {
+  width: 80px; /* Adjust the width as desired */
+}
+
+.label-medium {
+  width: 120px; /* Adjust the width as desired */
+}
+
+.input-small{
+  width: 80px;
+}
+.input-medium {
+  width: 120px; /* Adjust the width as desired */
+}
+.custom-button-height {
+  height: 50px; /* Adjust the height as needed */
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
