@@ -3,6 +3,7 @@ import "./App.css";
 
 
 //components
+import InputQuery from "./components/query";
 import InputBook from "./components/inputBook";
 import ListBook from "./components/listBook";
 
@@ -12,6 +13,7 @@ function App() {
       <div className="container">
         <InputBook />
         <ListBook />
+        <InputQuery />
       </div>
     </Fragment>
   );
