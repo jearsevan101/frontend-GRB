@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const InputQuery = () => {
   const [query, setQuery] = useState("");
   const [output, setOutput] = useState("");
-
   const handleQuery = async () => {
     try {
       const response = await fetch("https://backend-grb.vercel.app/query", {
@@ -27,10 +26,12 @@ const InputQuery = () => {
       console.error(error.message);
     }
   };
-
+  const refreshPage = () => {
+    window.location = "/";
+  };
   return (
     <div>
-      <h1 className="text-center mt-5">Query Edit</h1>
+      <h1 className="text-center mt-5">SQL Builder</h1>
       <div>
         <label htmlFor="query">Query:</label>
         <textarea
@@ -41,7 +42,8 @@ const InputQuery = () => {
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
-      <button onClick={handleQuery}>Submit</button>
+      <button onClick={handleQuery} className="btn btn-warning" style={{ backgroundColor: "#ffcc00", color: "#fff" }}>Submit</button>
+      <button onClick={refreshPage} className="btn btn-warning" style={{ backgroundColor: "#66ccff", color: "#fff" }}>Refresh</button>
       <div>
       <label htmlFor="output">Output:</label>
         <textarea

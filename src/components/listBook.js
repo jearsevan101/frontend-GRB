@@ -1,20 +1,23 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditBook from "./editBook";
 
-
 const ListBook = () => {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const deleteBook = async id => {
+  const deleteBook = async (id) => {
     try {
-      const deleteBook = await fetch(`https://backend-grb.vercel.app/books/${id}`,{method: "DELETE"});
-      
-      setBooks(books.filter(book =>book.book_id !==id));
+      const deleteBook = await fetch(
+        `https://backend-grb.vercel.app/books/${id}`,
+        { method: "DELETE" }
+      );
+
+      setBooks(books.filter((book) => book.book_id !== id));
     } catch (err) {
       console.error(err.message);
     }
-  }
+  };
+
   const getBooks = async () => {
     try {
       const response = await fetch("https://backend-grb.vercel.app/books");
@@ -44,7 +47,7 @@ const ListBook = () => {
       ) : (
         <table className="table table-bordered mt-5 text-center">
           <thead>
-            <tr>
+            <tr style={{ backgroundColor: "#333", color: "#fff" }}>
               <th>Book Id</th>
               <th>Store Id</th>
               <th>Author Id</th>
@@ -54,14 +57,18 @@ const ListBook = () => {
               <th>Book Price</th>
               <th>Pages</th>
               <th>Book Quantity</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              <th style={{ backgroundColor: "#66ccff", color: "#fff" }}>
+                Edit
+              </th>
+              <th style={{ backgroundColor: "#ff6666", color: "#fff" }}>
+                Delete
+              </th>
             </tr>
           </thead>
           <tbody>
             {books.length > 0 ? (
-              books.map((book) => (
-                <tr key={book.book_id}>
+              books.map((book, index) => (
+                <tr key={book.book_id} style={{ backgroundColor: index % 2 === 0 ? "#f9f9f9" : "#fff" }}>
                   <td>{book.book_id}</td>
                   <td>{book.store_id}</td>
                   <td>{book.author_id}</td>
@@ -71,8 +78,18 @@ const ListBook = () => {
                   <td>{book.book_price}</td>
                   <td>{book.pages}</td>
                   <td>{book.book_quantity}</td>
-                  <td><EditBook book={book} /></td>
-                  <td><button className="btn btn-danger" onClick={() =>deleteBook(book.book_id)}>Delete</button></td>
+                  <td>
+                    <EditBook book={book} />
+                  </td>
+                  <td>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => deleteBook(book.book_id)}
+                      style={{ backgroundColor: "#ff6666", color: "#fff" }}
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))
             ) : (

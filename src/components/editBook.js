@@ -82,7 +82,7 @@ const EditBook = ({ book }) => {
 
   return (
     <Fragment>
-      <button type="button" className="btn btn-warning" data-toggle="modal" data-target={`#id${book.book_id}`}>
+      <button type="button" className="btn btn-warning" data-toggle="modal" data-target={`#id${book.book_id}`} style={{ backgroundColor: "#66ccff", color: "#fff" }}>
         Edit
       </button>
 
@@ -179,7 +179,7 @@ const EditBook = ({ book }) => {
             </div>
 
             <div className="modal-footer">
-              <button type="button" className="btn btn-warning" data-dismiss="modal" onClick={updateBook}>
+              <button type="button" className="btn btn-warning" data-dismiss="modal" onClick={updateBook} style={{ backgroundColor: "#66ccff", color: "#fff" }}>
                 Edit
               </button>
               <button type="button" className="btn btn-danger" data-dismiss="modal">
